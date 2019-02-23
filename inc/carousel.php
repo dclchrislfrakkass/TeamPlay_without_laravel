@@ -1,4 +1,4 @@
-<div id="carouselHome" class="carousel slide" data-ride="carousel">
+<div id="carouselHome" class="carousel slide mt-5" data-ride="carousel">
 
 <!-- Indicatrs -->
 <ul class="carousel-indicators">
