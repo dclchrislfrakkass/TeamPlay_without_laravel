@@ -71,13 +71,40 @@
                             <label>Mot de passe</label>  
                             <input type="password" name="password" id="password" class="form-control" required/>  
                             <br/>  
-                            <button type="submit" name="login_button" id="login_button" class="btn btn-warning">Connexion</button>  
+                            <button type="submit" name="login_button" id="login_button" class="btn btn-warning">Connexion</button>
                         </form>
                     </div>  
             </div>  
         </div>  
     </div>  
-
+    <div id="registerModal" class="modal fade" role="dialog">  
+        <div class="modal-dialog">  
+    <!-- Modal content-->  
+            <div class="modal-content">  
+                    <div class="modal-header">  
+                        <h4 class="modal-title">Team Play - Inscription</h4>  
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                    </div>  
+                    <div class="modal-body">  
+                        <form>
+                            <label>Pseudo</label>  
+                            <input type="text" name="username" id="username" class="form-control" required/>  
+                            <br/>  
+                            <label>Mail</label>  
+                            <input type="email" name="username" id="username" class="form-control" required/>  
+                            <br/> 
+                            <label>Mot de passe</label>  
+                            <input type="password" name="password" id="password" class="form-control" required/>  
+                            <br/>  
+                            <label>Confirmation du mot de passe</label>  
+                            <input type="password" name="password" id="password" class="form-control" required/>  
+                            <br/>  
+                            <button type="submit" name="register_button" id="register_button" class="btn btn-warning">Inscription</button>
+                        </form>
+                    </div>  
+            </div>  
+        </div>  
+    </div>  
   
 
        <div class="col-5 col-md-3 col-lg-3">

@@ -25,7 +25,8 @@
     </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-        <button type="button" name="login" id="login" class="btn btn-success mr-5" data-toggle="modal" data-target="#loginModal">Connexion</button>  
+        <button type="button" name="login" id="login" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#loginModal">Connexion</button>  
+        <button type="button" name="register" id="register" class="btn btn-outline-warning mr-5" data-toggle="modal" data-target="#registerModal">Inscription</button>
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
     </form>
