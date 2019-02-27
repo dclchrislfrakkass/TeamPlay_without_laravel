@@ -1,12 +1,10 @@
-<?php include 'inc/top.php'; ?>
-<body>
+<?php $title = 'Accueil'; ?>
 
-<?php include 'inc/navbar.php'; ?>
-
+<?php ob_start(); ?>
 <main role="main">
 
 
-<?php include 'inc/carousel.php'; ?>
+
 
 
 <!-- <div class="jumbotron">
@@ -29,14 +27,14 @@
             <div class="col-md-5 mt-5 ml-5">
                 <h2>Titre</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-               <p><a class="btn btn-secondary" href="#" role="button">Plus <i class="fas fa-forward"></i></a></p>
+            <p><a class="btn btn-secondary" href="#" role="button">Plus <i class="fas fa-forward"></i></a></p>
             </div>
                 <div class="col-md-5 mt-5 ml-5">
                 <h2>Titre</h2>
                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                 <p><a class="btn btn-secondary" href="#" role="button">Plus <i class="fas fa-forward"></i></a></p>
             </div>
-         </div>
+        </div>
 
     <!-- <hr> -->
 </div> 
@@ -76,7 +74,7 @@
                             <input type="text" name="username" id="username" class="form-control" required/>  
                             <br/>  
                             <label>Mail</label>  
-                            <input type="email" name="username" id="username" class="form-control" required/>  
+                            <input type="email" name="email" id="email" class="form-control" required/>  
                             <br/> 
                             <label>Mot de passe</label>  
                             <input type="password" name="password" id="password" class="form-control" required/>  
@@ -92,7 +90,7 @@
     </div>  
   
 
-       <div class="col-5 col-md-3 col-lg-3">
+    <div class="col-5 col-md-3 col-lg-3">
 
         <?php include 'inc/sidebar.php'; ?>
 
@@ -102,5 +100,6 @@
 
 </div>
 </main>
+<?php $content = ob_get_clean(); ?>
 
-<?php include 'inc/footer.php'; ?>
+<?php require('template.php'); ?>

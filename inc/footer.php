@@ -1,6 +1,6 @@
  
 <footer id="footer" class="text-center fixed-bottom">
-    <p>Copyright 2019 &copy; Frakkass</p>
+    <p>Copyright 2019 &copy; Frakkass & Lycan</p>
     
     
     </footer>
