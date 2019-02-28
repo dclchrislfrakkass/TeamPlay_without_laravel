@@ -30,7 +30,7 @@ if (isset($_POST['submit']))
                 /* Vérification de la connexion */
                 //On créé la requête
                 var_dump($sql);
-                $sql = "INSERT INTO users (name, email, password, role) VALUES ('$pseudo', '$email', '$hPass', '0')";
+                $sql = "INSERT INTO users (id, name, email, password, role) VALUES ('', '$pseudo', '$email', '$hPass', '0')";
                  
                 /* execute et affiche l'erreur mysql si elle se produit */
                 if(!$c->query($sql))
