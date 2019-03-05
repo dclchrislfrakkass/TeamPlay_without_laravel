@@ -40,7 +40,7 @@ if (isset($_POST['register_button']))
                     
                 } else {
                     // Insertion dans la base de donnée
-                    $creationUtilisateur = $bd->prepare("INSERT INTO users SET name = :username, email = :email, password = :password, role = 'user'");
+                    $creationUtilisateur = $bd->prepare("INSERT INTO users SET name = :username, email = :email, password = :password, idRole = '2'");
                     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                     $creationUtilisateur->bindParam(':username', $_POST['username']);
                     $creationUtilisateur->bindParam(':email', $_POST['email']);
