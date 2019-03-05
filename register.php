@@ -1,10 +1,14 @@
-<?php include 'inc/top.php' ?>
-<?php include 'inc/navbar.php' ?>
+<?php 
+    include 'inc/top.php';
+    include 'inc/navbar.php';
+    require_once 'work/pdo.php';
+ ?>
+
 <?php
+$errors = array();
 
 
-
-if (isset($_POST['submit']))
+if (isset($_POST['register_button']))
 {
 
 /* on test si les champ sont bien remplis */
@@ -20,30 +24,36 @@ if (isset($_POST['submit']))
         /* on test si le mdp contient bien au moins 6 caractère */
         if (strlen($_POST['password'])>=6)
         {
-            /* on test si les deux mdp sont bien identique */
-            if ($_POST['password']==$_POST['repeatPassword'])
+            /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
+            if (empty($_POST['password']) || $_POST['password'] != $_POST['repeatPassword'])
             {
-                // On crypte le mot de passe
-                $hPass= password_hash($_POST['password'], PASSWORD_DEFAULT);
-                // on se connecte à MySQL et on sélectionne la base
-                $c = new mysqli('localhost','teamplay', 'chrisfab', 'teamplay');
-                /* Vérification de la connexion */
-                //On créé la requête
-                var_dump($sql);
-                $sql = "INSERT INTO users (id, name, email, password, role) VALUES ('', '$pseudo', '$email', '$hPass', '0')";
-                 
-                /* execute et affiche l'erreur mysql si elle se produit */
-                if(!$c->query($sql))
-                {
-                    printf("Message d'erreur : %s\n", $c->error);
+                $errors['pass'] = "Vous devez rentrer un mot de passe valide";
+
+            } else {
+                // Vérifie si l'utilisateur n'est pas déjà enregistré
+                $req = $bd->prepare("SELECT name FROM users WHERE name = :username");
+                $req->bindParam(':username', $_POST['username']);
+                $membre = $req->fetch();
+
+                if ($membre) {
+                    echo 'Ce nom est déjà utilisé !';
+                    
+                } else {
+                    // Insertion dans la base de donnée
+                    $creationUtilisateur = $bd->prepare("INSERT INTO users SET name = :username, email = :email, password = :password, role = 'user'");
+                    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                    $creationUtilisateur->bindParam(':username', $_POST['username']);
+                    $creationUtilisateur->bindParam(':email', $_POST['email']);
+                    $creationUtilisateur->bindParam(':password', $password);
+                    $creationUtilisateur->execute();
+                
+                    echo '<br/>';
+                    echo '<br/>';
+                    echo $username. " a bien été enregistré !";
                 }
-            // on ferme la connexion
-            mysqli_close($c);
-            echo '<br/>';
-            echo '<br/>';
-            echo $pseudo. " a bien été enregistré !";
+
             }
-            else echo "Les mots de passe ne sont pas identiques";
+            
         }
         else echo "Le mot de passe est trop court !";
     }

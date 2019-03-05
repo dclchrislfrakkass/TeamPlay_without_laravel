@@ -51,11 +51,14 @@
                     <div class="modal-body">  
                         <form method="post" action="login.php">
                             <label>Pseudo</label>  
-                            <input type="text" name="username" id="username" class="form-control" required/>  
-                            <br/>  
+                            <input type="text" name="username" id="username" class="form-control" required/>
+                            <br/>
                             <label>Mot de passe</label>  
-                            <input type="password" name="password" id="password" class="form-control" required/>  
-                            <br/>  
+                            <input type="password" name="password" id="password" class="form-control" required/>
+                            <br/>
+                            <label>Confirmation du mot de passe</label>  
+                            <input type="password" name="repeatPassword" id="repeatPassword" class="form-control" required/>
+                            <br/>
                             <button type="submit" name="login_button" id="login_button" class="btn btn-warning">Connexion</button>
                         </form>
                     </div>  
@@ -76,7 +79,7 @@
                             <input type="text" name="username" id="username" class="form-control" required/>  
                             <br/>  
                             <label>Mail</label>  
-                            <input type="email" name="username" id="username" class="form-control" required/>  
+                            <input type="email" name="email" id="email" class="form-control" required/>  
                             <br/> 
                             <label>Mot de passe</label>  
                             <input type="password" name="password" id="password" class="form-control" required/>  
