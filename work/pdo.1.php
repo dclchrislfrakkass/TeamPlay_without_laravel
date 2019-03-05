@@ -1,10 +1,10 @@
 <?php
 
 abstract class PDORepository{
-        const USERNAME="dbu15956";
-        const PASSWORD="chrisfab18";
-        const HOST="db5000019265.hosting-data.io";
-        const DB="dbs14689";
+        const USERNAME="root";
+        const PASSWORD="";
+        const HOST="localhost";
+        const DB="teamplay";
 
         private function getConnection(){
         $username = self::USERNAME;

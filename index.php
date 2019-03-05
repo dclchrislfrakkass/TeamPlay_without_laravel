@@ -1,14 +1,11 @@
-<?php include 'inc/top.php'; ?>
-<body>
+<?php $title = 'Accueil'; ?>
 
-<?php include 'inc/navbar.php'; ?>
-
+<?php ob_start(); ?>
 <main role="main">
 
 
+
 <?php include 'inc/carousel.php'; ?>
-
-
 <!-- <div class="jumbotron">
     <div class="container">
     <h1 class="display-3">Bienvenue sur TeamPlay</h1>
@@ -74,7 +71,7 @@
                         <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>  
                     </div>  
                     <div class="modal-body">  
-                        <form method="post" action="register.php">
+                        <form method="post" action="">
                             <label>Pseudo</label>  
                             <input type="text" name="username" id="username" class="form-control" required/>  
                             <br/>  
@@ -92,6 +89,70 @@
                     </div>  
             </div>  
         </div>  
+
+        <?php require_once 'work/pdo.php'; 
+
+        $errors = array();
+
+
+        if (isset($_POST['register_button']))
+        {
+
+        /* on test si les champ sont bien remplis */
+            if(!empty($_POST['username']) and !empty($_POST['email']) and !empty($_POST['password']) and !empty($_POST['repeatPassword']))
+            {
+
+                $username = htmlspecialchars(trim($_POST['username']));
+                $email = htmlspecialchars(trim($_POST['email']));
+                $password = htmlspecialchars(trim($_POST['password']));
+                $repeatPassword = htmlspecialchars(trim($_POST['repeatPassword']));
+
+
+                /* on test si le mdp contient bien au moins 6 caractère */
+                if (strlen($_POST['password'])>=6)
+                {
+                    /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
+                    if (empty($_POST['password']) || $_POST['password'] != $_POST['repeatPassword'])
+                    {
+                        $errors['pass'] = "Vous devez rentrer un mot de passe valide";
+
+                    } else {
+                        // Vérifie si l'utilisateur n'est pas déjà enregistré
+                        $req = $bd->prepare("SELECT name FROM users WHERE name = :username");
+                        $req->bindParam(':username', $_POST['username']);
+                        $membre = $req->fetch();
+
+                        if ($membre) {
+                            echo '<div class="mx-auto mt-5>';
+                            echo 'Ce nom est déjà utilisé !';
+                            echo '</div>';
+                    
+                        } else {
+                            // Insertion dans la base de donnée
+                            $creationUtilisateur = $bd->prepare("INSERT INTO users SET name = :username, email = :email, password = :password, idRole = '2'");
+                            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                            $creationUtilisateur->bindParam(':username', $_POST['username']);
+                            $creationUtilisateur->bindParam(':email', $_POST['email']);
+                            $creationUtilisateur->bindParam(':password', $password);
+                            $creationUtilisateur->execute();
+                            
+                            echo "<script>alert(\"Utilisateur enregistré\")</script>";
+                            echo '<br/>';
+                            echo '<div class="mx-auto mt-5>';
+                            echo $username. " a bien été enregistré !<br/>";
+                            echo '</div>';
+                        }
+
+                    }
+            
+                }
+                else echo "Le mot de passe est trop court !";
+            }
+            else echo "Veuillez saisir tous les champs !";
+        }
+
+        ?>
+        
     </div>  
   
 
@@ -103,7 +164,8 @@
     </div>
 
 
-</div>
+    </div>
 </main>
+<?php $content = ob_get_clean(); ?>
 
-<?php include 'inc/footer.php'; ?>
+<?php require('template.php'); ?>
