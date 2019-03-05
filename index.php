@@ -123,6 +123,7 @@
                         $membre = $req->fetch();
 
                         if ($membre) {
+                            
                             echo '<div class="mx-auto mt-5>';
                             echo 'Ce nom est déjà utilisé !';
                             echo '</div>';
@@ -136,19 +137,19 @@
                             $creationUtilisateur->bindParam(':password', $password);
                             $creationUtilisateur->execute();
                             
-                            echo "<script>alert(\"Utilisateur enregistré\")</script>";
-                            echo '<br/>';
-                            echo '<div class="mx-auto mt-5>';
-                            echo $username. " a bien été enregistré !<br/>";
-                            echo '</div>';
+                            echo "<script>alert(\"Utilisateur ".$username. " enregistré\")</script>";
+                            // echo '<br/>';
+                            // echo '<div class="mx-auto mt-5>';
+                            // echo $username. " a bien été enregistré !<br/>";
+                            // echo '</div>';
                         }
 
                     }
             
                 }
-                else echo "Le mot de passe est trop court !";
+                else echo "<script>alert(\"Le mot de passe est trop court !\")</script>";
             }
-            else echo "Veuillez saisir tous les champs !";
+            else echo "<script>alert(\"Veuillez saisir tous les champs !\")</script>";
         }
 
         ?>
