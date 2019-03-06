@@ -1,5 +1,11 @@
+<?php
+session_start(); 
+
+// $_SESSION['name'] = $pseudoMembre;
+?>
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-<a class="navbar-brand" href="#">TeamPlay</a>
+<a class="navbar-brand" href="">TeamPlay</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
@@ -25,8 +31,18 @@
     </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
+    <?php
+    if (isset ($_SESSION['auth'])){
+        echo $_SESSION['pseudo'];
+
+    } else {
+        ?>
         <button type="button" name="login" id="login" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#loginModal">Connexion</button>  
-        <button type="button" name="register" id="register" class="btn btn-outline-warning mr-5" data-toggle="modal" data-target="#registerModal">Inscription</button>
+        <button type="button" name="register" id="register" class="btn btn-outline-warning mr-5" data-toggle="modal"     data-target="#registerModal">Inscription</button>
+        <?php
+    }
+    ?>
+
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
     </form>
