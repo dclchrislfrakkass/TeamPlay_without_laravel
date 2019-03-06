@@ -36,7 +36,8 @@ session_start();
     if (isset ($_SESSION['auth'])){
         // echo $_SESSION['auth']->name;
          ?>
-        <button type="button" name="logout" id="logout" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#logoutModal"><a href="logout.php">Se déconnecter</a></button>
+         <a class="btn btn-outline-info mr-2" name="logout" id="logout" href="logout.php" role="button">Se déconnecter</a>
+      
     
     <?php
 
