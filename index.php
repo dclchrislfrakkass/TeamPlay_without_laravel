@@ -17,7 +17,9 @@
 <div class="row">
     <div class="col-7 col-md-9 col-lg-9">
   
-    <!-- @include('inc.messages') affiche les messages d'erreur -->
+   <div class="servMessages text-center">
+    
+   </div>
       
 
 
