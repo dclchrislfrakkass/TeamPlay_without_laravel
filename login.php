@@ -5,7 +5,7 @@
 
 <?php
     require_once 'work/pdo.php';
-
+  
 if(session_status() == PHP_SESSION_NONE) {
 
     if(isset($_POST['login_button'])) {
@@ -13,7 +13,8 @@ if(session_status() == PHP_SESSION_NONE) {
         /* on test si les champ sont bien remplis */
         if(!empty($_POST['username']) and !empty($_POST['password']))
         {
-            
+            echo "<br/><br/><br/>";
+            echo "je rentre ici !";
             $username = htmlspecialchars(trim($_POST['username']));
             $password = htmlspecialchars(trim($_POST['password']));
             // var_dump($username);
@@ -24,43 +25,61 @@ if(session_status() == PHP_SESSION_NONE) {
             $user = $connect->fetch();
             echo "<br/><br/><br/>";
             echo "<br/><br/><br/>";
-            echo "<br/><br/><br/>";
-            echo "<br/><br/><br/>";
+            echo "var dump de user après select : <br/>";
             var_dump($user);
+           
 
         /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
         // $isPasswordCorrect = password_verify($_POST['password'], $user->password);
 
-            if (password_verify($_POST['password'], $user->password)) {
-                
-                $_SESSION['auth'] = $user;
-                $_SESSION['flash']['success'] = 'Vous etes maintenant bien connecté';
-                $idMembre = $user->id;
-                $pseudoMembre = $user->name;
-                // header('Location: onestlog.php');
+            if (!$user)
+            {
                 echo "<br/><br/><br/>";
-                echo 'Je suis passé ici !';
                 echo "<br/><br/><br/>";
+                echo "var dump de user si pas bon : <br/>";
                 var_dump($user);
-                session_start();
-                var_dump($_SESSION['auth']);
-            } else {
                 echo 'Mauvais identifiant ou mot de passe !';
+            }
+            else
+            {
+                if (password_verify($_POST['password'], $user->password)) {
+                    session_start();
+                    
+                    $_SESSION['auth'] = $user;
+                    $_SESSION['flash']['success'] = 'Vous etes maintenant bien connecté';
+                    $idMembre = $user->id;
+                    $pseudoMembre = $user->name;
+                    // echo "<br/><br/><br/>";
+                    // echo "print_r de session : <br/><br/>";
+                    // print_r ($_SESSION);
+                    
+                    // echo "<br/><br/><br/>";
+                    // var_dump($_SESSION['auth']->name);
+                    // echo "<br/><br/><br/>";
+                    // echo "var dump de user si c'est bon : <br/>";
+                    // var_dump($user);
+                    // echo "var dump de session auth si c'est bon : <br/>";
+                    header('Location: index.php');
+                    exit();
+                } else {
+                    echo 'Mauvais identifiant ou mot de passe !';
+                }
             }
         }
     }
 }
 
-echo "<br/><br/><br/>";
-var_dump($_SESSION['auth']);
-echo "<br/><br/><br/>";
-var_dump($user);
-echo '<br><br>';
-echo $idMembre;
-echo '<br><br>';
-echo $pseudoMembre;
-echo '<br><br>';
-var_dump($idMembre);
+// echo "<br/><br/><br/>";
+// var_dump($_SESSION['auth']);
+// echo "<br/><br/><br/>";
+// var_dump($user);
+// echo '<br><br>';
+// echo $idMembre;
+// echo '<br><br>';
+// echo $pseudoMembre;
+// echo '<br><br>';
+// var_dump($idMembre);
+
 ?>
 
 </main>
