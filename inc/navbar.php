@@ -38,7 +38,6 @@ session_start();
         // echo $_SESSION['auth']->name;
         
          ?>
-        <div class="bg-success mr-5">Bienvenue <?php echo $_SESSION['auth']->name ?></div>
          <a class="btn btn-outline-info mr-2" name="logout" id="logout" href="logout.php" role="button">Se déconnecter</a>
       
     
