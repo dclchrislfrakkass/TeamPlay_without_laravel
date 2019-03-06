@@ -32,8 +32,10 @@ session_start();
     </ul>
     <form class="form-inline my-2 my-lg-0">
     <?php
+
     if (isset ($_SESSION['auth'])){
-        echo $_SESSION['auth']->name; ?>
+        // echo $_SESSION['auth']->name;
+         ?>
         <button type="button" name="logout" id="logout" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#logoutModal"><a href="logout.php">Se déconnecter</a></button>
     
     <?php
