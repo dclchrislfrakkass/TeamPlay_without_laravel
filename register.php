@@ -1,6 +1,10 @@
-<?php 
-include 'inc/top.php';
-include 'inc/navbar.php';
+
+<?php $title = 'register'; ?>
+
+<?php ob_start(); ?>
+<main role="main">
+
+<?php
 require_once 'work/pdo.php';
 
 
@@ -48,10 +52,7 @@ if (isset($_POST['register_button']))
                     $creationUtilisateur->bindParam(':password', $password);
                     $creationUtilisateur->execute();
                 
-                    echo '<br/>';
-                    echo '<div class="validate mt-5>';
-                    echo $username. " a bien été enregistré !<br/>";
-                    echo '</div>';
+                    echo "<script>alert(\"Utilisateur ".$username. " enregistré\")</script>";
                 }
 
             }
@@ -64,3 +65,9 @@ if (isset($_POST['register_button']))
 
 ?>
 </div>
+
+
+</main>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>

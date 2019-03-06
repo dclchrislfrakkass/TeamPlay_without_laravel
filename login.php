@@ -1,6 +1,9 @@
-<?php 
-    include 'inc/top.php';
-    include 'inc/navbar.php';
+<?php $title = 'login'; ?>
+
+<?php ob_start(); ?>
+<main role="main">
+
+<?php
     require_once 'work/pdo.php';
 
 if(session_status() == PHP_SESSION_NONE) {
@@ -8,31 +11,61 @@ if(session_status() == PHP_SESSION_NONE) {
     if(isset($_POST['login_button'])) {
 
         /* on test si les champ sont bien remplis */
-        if(!empty($_POST['username']) and !empty($_POST['password']) and !empty($_POST['repeatPassword']))
+        if(!empty($_POST['username']) and !empty($_POST['password']))
         {
             
             $username = htmlspecialchars(trim($_POST['username']));
             $password = htmlspecialchars(trim($_POST['password']));
-            $repeatPassword = htmlspecialchars(trim($_POST['repeatPassword']));
-            var_dump($username);
-            var_dump($password);
-            var_dump($repeatPassword);
+            // var_dump($username);
+            // var_dump($password);
+            $connect = $bd->prepare("SELECT * FROM users WHERE name = :name");
+            $connect->bindParam(':name', $username);
+            $connect->execute();
+            $user = $connect->fetch();
+            echo "<br/><br/><br/>";
+            echo "<br/><br/><br/>";
+            var_dump($user);
 
         /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
-            if (empty($_POST['password']) || $_POST['password'] != $_POST['repeatPassword'])
-            {
-                $errors['pass'] = "Vous devez rentrer un mot de passe valide";
-            } else {
-                $connect = $bd->prepare("SELECT * FROM users WHERE name = :name");
-                $connect->bindParam(':name', $username);
-                $connect->execute();
-                $user = $connect->fetch();
-                session_start();
+        $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
 
-                $_SESSION['auth'] = $user;
+        if (!$user)
+        {
+
+            echo "<br/><br/><br/>";
+            echo "<br/><br/><br/>";
+            var_dump($user);
+            echo 'Mauvais identifiant ou mot de passe !';
+        }
+        else
+        {
+            if ($isPasswordCorrect) {
+                
+                            $user = $_SESSION['auth']; 
                 $_SESSION['flash']['success'] = 'Vous etes maintenant bien connecté';
+                $idMembre = $user['id'];
+                $pseudoMembre = $user['name'];
                 header('Location: index.php');
+                echo "<br/><br/><br/>";
+                echo "<br/><br/><br/>";
+                var_dump($user);
+            } else {
+                echo 'Mauvais identifiant ou mot de passe !';
+            }
             }
         }
     }
 }
+
+echo "<br/><br/><br/>";
+echo "<br/><br/><br/>";
+var_dump($user);
+echo $idMembre;
+echo $pseudoMembre;
+var_dump($idMembre);
+?>
+
+</main>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
