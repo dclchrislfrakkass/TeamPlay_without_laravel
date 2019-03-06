@@ -24,10 +24,12 @@ if(session_status() == PHP_SESSION_NONE) {
             $user = $connect->fetch();
             echo "<br/><br/><br/>";
             echo "<br/><br/><br/>";
+            echo "<br/><br/><br/>";
+            echo "<br/><br/><br/>";
             var_dump($user);
 
         /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
-        $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
+        // $isPasswordCorrect = password_verify($_POST['password'], $user->password);
 
         if (!$user)
         {
@@ -39,16 +41,18 @@ if(session_status() == PHP_SESSION_NONE) {
         }
         else
         {
-            if ($isPasswordCorrect) {
+            if (password_verify($_POST['password'], $user->password)) {
                 
-                            $user = $_SESSION['auth']; 
+                $_SESSION['auth'] = $user;
                 $_SESSION['flash']['success'] = 'Vous etes maintenant bien connecté';
-                $idMembre = $user['id'];
-                $pseudoMembre = $user['name'];
-                header('Location: index.php');
+                $idMembre = $user->id;
+                $pseudoMembre = $user->name;
+                // header('Location: onestlog.php');
                 echo "<br/><br/><br/>";
                 echo "<br/><br/><br/>";
                 var_dump($user);
+                session_start();
+                var_dump($_SESSION['auth']);
             } else {
                 echo 'Mauvais identifiant ou mot de passe !';
             }

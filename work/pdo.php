@@ -1,7 +1,7 @@
 <?php
 
 try {
-$json =file_get_contents('work/pdo1.JSON');
+$json =file_get_contents('work/pdo.JSON');
 $dec=json_decode($json, true);
 
 $bd=new PDO("mysql:host=".$dec['host'].";dbname=".$dec['dbName'], $dec['user'] , $dec['pass']);
