@@ -63,7 +63,7 @@
             </div>  
 
         </div>  
-    </div>  
+    </div> 
     <div id="registerModal" class="modal fade" role="dialog">  
         <div class="modal-dialog">  
     <!-- Modal content-->  
