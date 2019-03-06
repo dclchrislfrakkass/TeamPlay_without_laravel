@@ -33,11 +33,14 @@ session_start();
     <form class="form-inline my-2 my-lg-0">
     <?php
     if (isset ($_SESSION['auth'])){
-        echo $_SESSION['pseudo'];
+        echo $_SESSION['auth']->name; ?>
+        <button type="button" name="logout" id="logout" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#logoutModal"><a href="logout.php">Se déconnecter</a></button>
+    
+    <?php
 
     } else {
         ?>
-        <button type="button" name="login" id="login" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#loginModal">Connexion</button>  
+        <button type="button" name="login" id="login" class="btn btn-outline-info mr-2" data-toggle="modal" data-target="#loginModal">Connexion</button>
         <button type="button" name="register" id="register" class="btn btn-outline-warning mr-5" data-toggle="modal"     data-target="#registerModal">Inscription</button>
         <?php
     }
