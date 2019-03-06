@@ -5,7 +5,7 @@
 
 <?php
     require_once 'work/pdo.php';
-
+  
 if(session_status() == PHP_SESSION_NONE) {
 
     if(isset($_POST['login_button'])) {
@@ -13,7 +13,8 @@ if(session_status() == PHP_SESSION_NONE) {
         /* on test si les champ sont bien remplis */
         if(!empty($_POST['username']) and !empty($_POST['password']))
         {
-            
+            echo "<br/><br/><br/>";
+            echo "je rentre ici !";
             $username = htmlspecialchars(trim($_POST['username']));
             $password = htmlspecialchars(trim($_POST['password']));
             // var_dump($username);
@@ -24,9 +25,9 @@ if(session_status() == PHP_SESSION_NONE) {
             $user = $connect->fetch();
             echo "<br/><br/><br/>";
             echo "<br/><br/><br/>";
-            echo "<br/><br/><br/>";
-            echo "<br/><br/><br/>";
+            echo "var dump de user après select : <br/>";
             var_dump($user);
+           
 
         /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
         // $isPasswordCorrect = password_verify($_POST['password'], $user->password);
@@ -36,6 +37,7 @@ if(session_status() == PHP_SESSION_NONE) {
 
             echo "<br/><br/><br/>";
             echo "<br/><br/><br/>";
+            echo "var dump de user si pas bon : <br/>";
             var_dump($user);
             echo 'Mauvais identifiant ou mot de passe !';
         }
@@ -49,10 +51,16 @@ if(session_status() == PHP_SESSION_NONE) {
                 $pseudoMembre = $user->name;
                 // header('Location: onestlog.php');
                 echo "<br/><br/><br/>";
+                echo "print_r de session : <br/><br/>";
+                print_r ($_SESSION);
+    
                 echo "<br/><br/><br/>";
+                echo "<br/><br/><br/>";
+                echo "var dump de user si c'est bon : <br/>";
                 var_dump($user);
                 session_start();
-                var_dump($_SESSION['auth']);
+                echo "var dump de session auth si c'est bon : <br/>";
+
             } else {
                 echo 'Mauvais identifiant ou mot de passe !';
             }
@@ -61,12 +69,7 @@ if(session_status() == PHP_SESSION_NONE) {
     }
 }
 
-echo "<br/><br/><br/>";
-echo "<br/><br/><br/>";
-var_dump($user);
-echo $idMembre;
-echo $pseudoMembre;
-var_dump($idMembre);
+
 ?>
 
 </main>

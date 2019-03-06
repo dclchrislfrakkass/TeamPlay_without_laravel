@@ -54,9 +54,9 @@
                             <label>Mot de passe</label>  
                             <input type="password" name="password" id="password" class="form-control" required/>
                             <br/>
-                            <label>Confirmation du mot de passe</label>  
+                            <!-- <label>Confirmation du mot de passe</label>  
                             <input type="password" name="repeatPassword" id="repeatPassword" class="form-control" required/>
-                            <br/>
+                            <br/> -->
                             <button type="submit" name="login_button" id="login_button" class="btn btn-warning">Connexion</button>
                         </form>
                     </div>  
