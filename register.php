@@ -1,10 +1,9 @@
 <?php 
-    include 'inc/top.php';
-    include 'inc/navbar.php';
-    require_once 'work/pdo.php';
- ?>
+include 'inc/top.php';
+include 'inc/navbar.php';
+require_once 'work/pdo.php';
 
-<?php
+
 $errors = array();
 
 
@@ -36,7 +35,9 @@ if (isset($_POST['register_button']))
                 $membre = $req->fetch();
 
                 if ($membre) {
+                    echo '<div class="top mt-5>';
                     echo 'Ce nom est déjà utilisé !';
+                    echo '</div>';
                     
                 } else {
                     // Insertion dans la base de donnée
@@ -48,8 +49,9 @@ if (isset($_POST['register_button']))
                     $creationUtilisateur->execute();
                 
                     echo '<br/>';
-                    echo '<br/>';
-                    echo $username. " a bien été enregistré !";
+                    echo '<div class="validate mt-5>';
+                    echo $username. " a bien été enregistré !<br/>";
+                    echo '</div>';
                 }
 
             }
@@ -62,4 +64,3 @@ if (isset($_POST['register_button']))
 
 ?>
 </div>
-<?php include 'inc/footer.php' ?>
