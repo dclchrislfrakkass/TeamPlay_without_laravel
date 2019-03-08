@@ -1,7 +1,7 @@
 <?php
-    session_start(); 
+    // session_start(); 
     if (isset($_SESSION)){
-    $user = $_SESSION['auth']->name;};
+    $user = $_SESSION['auth']->name;}
     require_once './work/pdo.php';
 
 
@@ -11,17 +11,25 @@
     <form action="../chatPost.php" method="post">
                 <p>
                 <h3>Discussion</h3>
-                <div class="bg-success mr-5"><?php echo $user ?></div>
-                
-                <input id="pseudo" name="pseudo" type="hidden" value="<?php echo $user ?>"><br />
-                
-                <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br />
+                <?php 
+                if (isset ($_SESSION['auth'])){ 
+    
+                    ?>
+                    <div class="bg-success mr-5"><?php echo $user ?></div>
+                    
+                    <input id="pseudo" name="pseudo" type="hidden" value="<?php echo $user ?>"><br />
+                    
+                    <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br />
 
-                <input type="submit" value="Envoyer" />
-            </p>
-            </form>
-
-        <?php
+                    <input type="submit" value="Envoyer" />
+                    </p>
+                    </form>
+                    <?php
+                } else {
+                    ?>
+                    <p>Vous devez être connecté pour parler</p>
+                    <?php
+                }
         // Connexion à la base de données
         // try
         // {
