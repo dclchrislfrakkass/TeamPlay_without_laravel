@@ -28,9 +28,9 @@ if (isset($_SESSION)){
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Action 2</a>
-        <a class="dropdown-item" href="#">Action 3</a>
+        <a class="dropdown-item" href="#">Overwatch</a>
+        <a class="dropdown-item" href="#">Diablo III</a>
+        <a class="dropdown-item" href="#">Apex Legend</a>
         </div>
     </li>
     <?php
@@ -43,7 +43,7 @@ if (isset($_SESSION)){
         <?php
         }
     }
-        ?>
+    ?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
     <?php
