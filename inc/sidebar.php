@@ -1,13 +1,13 @@
 <?php
-    // session_start(); 
-    if (session_start()){
-        echo '<br/><br/>';
-        // var_dump($_SESSION);
-    $user = $_SESSION['auth']->name;}
-    require_once './work/pdo.php';
+// session_start(); 
+if (session_start()){
+    echo '<br/><br/>';
+    // var_dump($_SESSION);
+    // $user = $_SESSION['auth']->name;
+}
+require_once './work/pdo.php';
 
-
-    ?>
+?>
 
     <div class="card card-body bg-light"> <!--attribut la class à la navbar -->
     <form action="../chatPost.php" method="post">
@@ -15,7 +15,7 @@
                 <h3>Discussion</h3>
                 <?php 
                 if (isset ($_SESSION['auth'])){ 
-    
+                    $user = $_SESSION['auth']->name;
                     ?>
                     <div class="bg-success mr-5"><?php echo $user ?></div>
                     
@@ -56,4 +56,3 @@
 
         ?>
     </div>
-    
