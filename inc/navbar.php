@@ -1,6 +1,8 @@
 <?php
 session_start(); 
 if (isset($_SESSION)){
+    echo '<br/><br/>';
+    print_r['auth'];
     $user = $_SESSION['auth']->name;}
 
 // $_SESSION['name'] = $pseudoMembre;

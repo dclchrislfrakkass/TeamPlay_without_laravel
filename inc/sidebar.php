@@ -1,6 +1,8 @@
 <?php
     // session_start(); 
     if (isset($_SESSION)){
+        echo '<br/><br/>';
+        var_dump($_SESSION);
     $user = $_SESSION['auth']->name;}
     require_once './work/pdo.php';
 
