@@ -33,6 +33,17 @@ if (isset($_SESSION)){
         <a class="dropdown-item" href="#">Action 3</a>
         </div>
     </li>
+    <?php
+    if(isset($_SESSION['auth'])) {
+        if ($_SESSION['auth']->idRole == "1") {
+        ?>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Gestion</a>
+        </li>
+        <?php
+        }
+    }
+        ?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
     <?php
