@@ -14,10 +14,11 @@ require_once './work/pdo.php';
                 <p>
                 <h3>Discussion</h3>
                 <?php 
-                if (isset ($_SESSION['auth'])){ 
-                    $user = $_SESSION['auth']->name;
+             
+                if (isset ($_COOKIE['pseudo'])){ 
+                    $user = $_COOKIE['pseudo'];
                     ?>
-                    <div class="bg-success mr-5"><?php echo $user ?></div>
+                    <div class="bg-success mr-5"><?php echo $user; ?></div>
                     
                     <input id="pseudo" name="pseudo" type="hidden" value="<?php echo $user ?>"><br />
                     

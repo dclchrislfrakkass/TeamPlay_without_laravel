@@ -49,6 +49,14 @@ if(session_status() == PHP_SESSION_NONE) {
                     $_SESSION['flash']['success'] = 'Vous etes maintenant bien connecté';
                     $idMembre = $user->id;
                     $pseudoMembre = $user->name;
+                    $user = $_SESSION['auth']->name;
+                    /**
+                     * Création du cookie teamplay, pseudo  et id du membre qui reste un an est httpOnly qui sécurise
+                     * contre le javascript
+                     */
+
+                    setcookie('pseudo', $user, time()+ 365*24*3600, null, null, false, true);
+                    setcookie('id', $idMembre, time()+ 365*24*3600, null, null, false, true);
                     // echo "<br/><br/><br/>";
                     // echo "print_r de session : <br/><br/>";
                     // print_r ($_SESSION);
