@@ -8,8 +8,9 @@ require_once 'work/pdo.php';
 
 
 <h1 class="mt-5">Bonjour <?php echo $_COOKIE['pseudo']; ?> !</h1>
+
 <div class="membres">
-    <h2>Membres enregistrés:</h2>
+    <h4>Membres enregistrés:</h4>
     <ul>
     <?php
         $req = $bd->query("SELECT * FROM users");
@@ -23,6 +24,10 @@ require_once 'work/pdo.php';
 </div>
 
 
+<div class="articles"></div>
+        <h4>Articles : </h4>
+
+
 
 
 
@@ -30,3 +35,10 @@ require_once 'work/pdo.php';
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
+
+
+
+
+
+
+
