@@ -1,10 +1,10 @@
 <?php
 // session_start(); 
-if (session_start()){
-    echo '<br/><br/>';
-    // var_dump($_SESSION);
-    // $user = $_SESSION['auth']->name;
-}
+// if (session_start()){
+//     echo '<br/><br/>';
+//     // var_dump($_SESSION);
+//     // $user = $_SESSION['auth']->name;
+// }
 require_once './work/pdo.php';
 
 ?>
