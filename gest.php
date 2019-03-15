@@ -1,5 +1,8 @@
 
-<?php $title = 'Accueil'; 
+<?php 
+session_start();
+
+$title = 'Accueil'; 
 require_once 'work/pdo.php';
 ?>
 
