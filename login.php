@@ -72,14 +72,15 @@ if(session_status() == PHP_SESSION_NONE) {
                 } else {
                     echo 'Mauvais identifiant ou mot de passe !';
                 }
-            }else{
-                echo "<br/><br/><br/>";
-                echo "<br/><br/><br/>";
-                echo "var dump de user si pas bon : <br/>";
-                var_dump($user);
-                echo 'Mauvais identifiant ou mot de passe !';
-            }
-            echo 'je peux etre ici';
+            } 
+            // else {
+            //     echo "<br/><br/><br/>";
+            //     echo "<br/><br/><br/>";
+            //     echo "var dump de user si pas bon : <br/>";
+            //     var_dump($user);
+            //     echo 'Mauvais identifiant ou mot de passe !';
+            // }
+            echo 'je peux etre ici ';
         }
         echo 'ou peut etre là';
     }
