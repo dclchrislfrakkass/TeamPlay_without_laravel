@@ -25,15 +25,23 @@ if(session_status() == PHP_SESSION_NONE) {
             $user = $connect->fetch();
             echo "<br/><br/><br/>";
             echo "<br/><br/><br/>";
-            echo "var dump de user après select : <br/>";
-            var_dump($user);
+            // echo "var dump de user après select : <br/>";
+            // var_dump($user);
            
 
         /* On test si le MDP est rentré, et si les deux MDP ne sont pas différent */
         // $isPasswordCorrect = password_verify($_POST['password'], $user->password);
 
-     
-            if (user){
+            if (!$user)
+            {
+                echo "<br/><br/><br/>";
+                echo "<br/><br/><br/>";
+                // echo "var dump de user si pas bon : <br/>";
+                // var_dump($user);
+                echo 'Mauvais identifiant ou mot de passe !';
+            }
+            else
+            {
                 if (password_verify($_POST['password'], $user->password)) {
                     session_start();
                     echo 'je suis là aussi';
