@@ -14,7 +14,6 @@ require_once './work/pdo.php';
                 <p>
                 <h3>Discussion</h3>
                 <?php 
-             
                 if (isset ($_COOKIE['pseudo'])){ 
                     $user = $_COOKIE['pseudo'];
                     ?>
